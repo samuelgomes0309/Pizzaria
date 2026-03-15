@@ -66,7 +66,7 @@ export function useOrder({ order_id, table }: UseOrderProps) {
 	}
 	async function loadProducts(category_id: string) {
 		try {
-			const response = await api.get<ProductProps[]>("/products/categories", {
+			const response = await api.get<ProductProps[]>("/products/category", {
 				params: {
 					category_id,
 				},
@@ -240,7 +240,7 @@ export function useOrder({ order_id, table }: UseOrderProps) {
 		}
 		try {
 			setLoading(true);
-			await api.post(`/order/${order_id}/startOrder`);
+			await api.post(`/orders/${order_id}/startOrder`);
 			Toast.show({ type: "success", text1: "Pedido enviado com sucesso." });
 			router.push("/(authenticated)/dashboard");
 		} catch (error) {
